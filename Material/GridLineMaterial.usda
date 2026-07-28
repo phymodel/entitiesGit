@@ -1,0 +1,277 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def Material "GridLineMaterial"
+    {
+        token cullMode = "back" (
+            allowedTokens = ["unspecified", "none", "front", "back"]
+        )
+        token outputs:mtlx:surface.connect = </Root/GridLineMaterial/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        token outputs:surface.connect = None
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (2548.0342, 258.94333)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 145
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap = 1
+            color3f inputs:color.connect = </Root/GridLineMaterial/ColorRemap.outputs:out>
+            bool inputs:hasPremultipliedAlpha = 0
+            float inputs:opacity.connect = </Root/GridLineMaterial/OpacityMax.outputs:out>
+            float inputs:opacityThreshold.connect = None
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (2293.9714, 298.32486)
+            int ui:nodegraph:node:stackingOrder = 147
+        }
+
+        def Shader "Texcoord"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (68.87248, 161.60498)
+            int ui:nodegraph:node:stackingOrder = 223
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_vector2"
+            float2 inputs:in1.connect = </Root/GridLineMaterial/Texcoord.outputs:out>
+            float2 inputs:in2.connect = </Root/GridLineMaterial/LineCounts.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (293.99527, 207.82204)
+            int ui:nodegraph:node:stackingOrder = 24
+        }
+
+        def Shader "Fractional"
+        {
+            uniform token info:id = "ND_realitykit_fractional_vector2"
+            float2 inputs:in.connect = </Root/GridLineMaterial/Multiply.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (470.26346, 211.00076)
+            int ui:nodegraph:node:stackingOrder = 22
+        }
+
+        def Shader "LineColor"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.56, 0.56, 0.56) (
+                colorSpace = "Input - Texture - sRGB - sRGB"
+            )
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (1741.2822, 247.18613)
+            int ui:nodegraph:node:stackingOrder = 165
+        }
+
+        def Shader "LineWidths"
+        {
+            uniform token info:id = "ND_combine2_vector2"
+            float inputs:in1 = 0.02
+            float inputs:in2 = 0.02
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (490.70108, 385.59003)
+            int ui:nodegraph:node:stackingOrder = 227
+        }
+
+        def Shader "LineCounts"
+        {
+            uniform token info:id = "ND_combine2_vector2"
+            float inputs:in1 = 100
+            float inputs:in2 = 100
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (75.3792, 290.6977)
+            int ui:nodegraph:node:stackingOrder = 225
+        }
+
+        def Shader "Separate2"
+        {
+            uniform token info:id = "ND_separate2_vector2"
+            float2 inputs:in.connect = </Root/GridLineMaterial/Range.outputs:out>
+            float outputs:outx
+            float outputs:outy
+            float2 ui:nodegraph:node:pos = (1188.4902, 485.54858)
+            int ui:nodegraph:node:stackingOrder = 199
+        }
+
+        def Shader "Range"
+        {
+            uniform token info:id = "ND_range_vector2"
+            bool inputs:doclamp = 1
+            float2 inputs:gamma = (2, 2)
+            float2 inputs:gamma.connect = None
+            float2 inputs:in.connect = </Root/GridLineMaterial/Absval.outputs:out>
+            float2 inputs:inhigh.connect = </Root/GridLineMaterial/LineWidths.outputs:out>
+            float2 inputs:inlow = (0.02, 0.02)
+            float2 inputs:inlow.connect = None
+            float2 inputs:outhigh
+            float2 inputs:outlow.connect = None
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (983.7366, 392.97696)
+            int ui:nodegraph:node:stackingOrder = 288
+        }
+
+        def Shader "Subtract"
+        {
+            uniform token info:id = "ND_subtract_vector2"
+            float2 inputs:in1.connect = </Root/GridLineMaterial/Fractional.outputs:out>
+            float2 inputs:in2.connect = </Root/GridLineMaterial/LineWidths.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (649.4771, 302.21793)
+            int ui:nodegraph:node:stackingOrder = 213
+        }
+
+        def Shader "Absval"
+        {
+            uniform token info:id = "ND_absval_vector2"
+            float2 inputs:in.connect = </Root/GridLineMaterial/Subtract.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (779.2131, 303.80536)
+            int ui:nodegraph:node:stackingOrder = 205
+        }
+
+        def Shader "Min"
+        {
+            uniform token info:id = "ND_min_float"
+            float inputs:in1.connect = </Root/GridLineMaterial/Separate2.outputs:outx>
+            float inputs:in2.connect = </Root/GridLineMaterial/Separate2.outputs:outy>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (1430.5786, 487.48477)
+            int ui:nodegraph:node:stackingOrder = 193
+        }
+
+        def Shader "ConstantOne"
+        {
+            uniform token info:id = "ND_constant_float"
+            float inputs:value = 1
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (1394.303, 415.4693)
+            int ui:nodegraph:node:stackingOrder = 195
+        }
+
+        def Shader "OpacitySubtract"
+        {
+            uniform token info:id = "ND_subtract_float"
+            float inputs:in1.connect = </Root/GridLineMaterial/ConstantOne.outputs:out>
+            float inputs:in2.connect = </Root/GridLineMaterial/Min.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (1746.4574, 456.7588)
+            int ui:nodegraph:node:stackingOrder = 187
+        }
+
+        def Shader "ConstantHalfVec"
+        {
+            uniform token info:id = "ND_combine2_vector2"
+            float inputs:in1 = 0.5
+            float inputs:in2 = 0.5
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (66.77019, 62.58949)
+            int ui:nodegraph:node:stackingOrder = 221
+        }
+
+        def Shader "SubtractCenter"
+        {
+            uniform token info:id = "ND_subtract_vector2"
+            float2 inputs:in1.connect = </Root/GridLineMaterial/ConstantHalfVec.outputs:out>
+            float2 inputs:in2.connect = </Root/GridLineMaterial/Texcoord.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (304.66785, 80.82117)
+            int ui:nodegraph:node:stackingOrder = 217
+        }
+
+        def Shader "AbsvalCenter"
+        {
+            uniform token info:id = "ND_absval_vector2"
+            float2 inputs:in.connect = </Root/GridLineMaterial/SubtractCenter.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (483.47964, 82.63141)
+            int ui:nodegraph:node:stackingOrder = 219
+        }
+
+        def Shader "RangeCenter"
+        {
+            uniform token info:id = "ND_range_vector2"
+            bool inputs:doclamp = 1
+            float2 inputs:gamma = (10, 10)
+            float2 inputs:in.connect = </Root/GridLineMaterial/AbsvalCenter.outputs:out>
+            float2 inputs:inhigh = (0, 0)
+            float2 inputs:inlow = (0.001, 0.001)
+            float2 inputs:outhigh = (1, 1)
+            float2 inputs:outlow = (0, 0)
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (760.98474, 122.52845)
+            int ui:nodegraph:node:stackingOrder = 277
+        }
+
+        def Shader "Separate2Center"
+        {
+            uniform token info:id = "ND_separate2_vector2"
+            float2 inputs:in.connect = </Root/GridLineMaterial/RangeCenter.outputs:out>
+            float outputs:outx
+            float outputs:outy
+            float2 ui:nodegraph:node:pos = (958.68, 213.71097)
+            int ui:nodegraph:node:stackingOrder = 229
+        }
+
+        def Shader "MaxCenterMask"
+        {
+            uniform token info:id = "ND_max_float"
+            float inputs:in1.connect = </Root/GridLineMaterial/Separate2Center.outputs:outx>
+            float inputs:in2.connect = </Root/GridLineMaterial/Separate2Center.outputs:outy>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (1384.7727, 338.25903)
+            int ui:nodegraph:node:stackingOrder = 197
+        }
+
+        def Shader "LineColor2"
+        {
+            uniform token info:id = "ND_constant_color3"
+            color3f inputs:value = (0.2, 0.4, 1) (
+                colorSpace = "Input - Texture - sRGB - sRGB"
+            )
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (1740.7052, 317.27823)
+            int ui:nodegraph:node:stackingOrder = 175
+        }
+
+        def Shader "Combine3CenterMask"
+        {
+            uniform token info:id = "ND_combine3_color3"
+            float inputs:in1.connect = </Root/GridLineMaterial/MaxCenterMask.outputs:out>
+            float inputs:in2.connect = </Root/GridLineMaterial/MaxCenterMask.outputs:out>
+            float inputs:in3.connect = </Root/GridLineMaterial/MaxCenterMask.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (1715.7739, 179.92679)
+            int ui:nodegraph:node:stackingOrder = 163
+        }
+
+        def Shader "ColorRemap"
+        {
+            uniform token info:id = "ND_remap_color3"
+            color3f inputs:in.connect = </Root/GridLineMaterial/Combine3CenterMask.outputs:out>
+            color3f inputs:inhigh
+            color3f inputs:inlow.connect = None
+            color3f inputs:outhigh.connect = </Root/GridLineMaterial/LineColor2.outputs:out>
+            color3f inputs:outlow.connect = </Root/GridLineMaterial/LineColor.outputs:out>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (2034.9548, 294.97903)
+            int ui:nodegraph:node:stackingOrder = 153
+        }
+
+        def Shader "OpacityMax"
+        {
+            uniform token info:id = "ND_max_float"
+            float inputs:in1.connect = </Root/GridLineMaterial/MaxCenterMask.outputs:out>
+            float inputs:in2.connect = </Root/GridLineMaterial/OpacitySubtract.outputs:out>
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (1993.4221, 433.71408)
+            int ui:nodegraph:node:stackingOrder = 189
+        }
+    }
+}
+

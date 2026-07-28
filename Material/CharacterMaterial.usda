@@ -1,0 +1,984 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (494.8.1)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["CharacterMaterial", "CelSurface"]
+    def Material "CharacterMaterial"
+    {
+        reorder nameChildren = ["CelSurface", "CelColor"]
+        asset inputs:image (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-346.9497, 279.94595)
+                    int stackingOrderInSubgraph = 7
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Root/CharacterMaterial/CelSurface.outputs:Token>
+        token outputs:realitykit:vertex
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (380.59344, 280.66028)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 15
+
+        def NodeGraph "CelSurface" (
+            active = true
+        )
+        {
+            float inputs:brightnessRemapHigh = 0.1 (
+                colorSpace = ""
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-489.1379, 149.74649)
+                        int stackingOrderInSubgraph = 19042
+                    }
+                }
+            )
+            float inputs:brightnessRemapLow = -0.1 (
+                colorSpace = ""
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-487.95636, 217.90195)
+                        int stackingOrderInSubgraph = 19042
+                    }
+                }
+            )
+            color3f inputs:DarkColor = (0.6642242, 0.66424006, 0.66423154) (
+                colorSpace = "srgb_texture"
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-452.10278, 287.89355)
+                        int stackingOrderInSubgraph = 19042
+                    }
+                }
+            )
+            color3f inputs:HighlightColor = (1, 0.83234566, 0.47320586) (
+                colorSpace = "srgb_texture"
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-462.7479, 358.1327)
+                        int stackingOrderInSubgraph = 19042
+                    }
+                }
+            )
+            color3f inputs:Image = (0, 0.9914394, 1) (
+                colorSpace = "srgb_texture"
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-452.00403, 429.89346)
+                        int stackingOrderInSubgraph = 19042
+                    }
+                }
+            )
+            color3f inputs:Image.connect = </Root/CharacterMaterial/Image.outputs:out>
+            color3f inputs:MidColor = (0.921431, 0.92145264, 0.921441) (
+                colorSpace = "srgb_texture"
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-451.2228, 495.22464)
+                        int stackingOrderInSubgraph = 19042
+                    }
+                }
+            )
+            float inputs:Opacity = 1 (
+                colorSpace = ""
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-247.99118, -6.217589)
+                        int stackingOrderInSubgraph = 18999
+                    }
+                }
+            )
+            float inputs:OpacityThreshold = 0 (
+                colorSpace = ""
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (-277.34067, 64.6011)
+                        int stackingOrderInSubgraph = 19102
+                    }
+                }
+            )
+            token outputs:Token (
+                customData = {
+                    dictionary realitykit = {
+                        float2 positionInSubgraph = (310, 284.5)
+                        int stackingOrderInSubgraph = 18979
+                    }
+                }
+            )
+            token outputs:Token.connect = </Root/CharacterMaterial/CelSurface/PreviewSurface.outputs:out>
+            float2 ui:nodegraph:node:pos = (128.45317, 277.92404)
+            int ui:nodegraph:node:stackingOrder = 50
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Out"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (478.46875, 277.9297)
+            int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 18994
+
+            def NodeGraph "CelColor" (
+                active = true
+            )
+            {
+                reorder nameChildren = ["AmbientColor", "ConstantFloat", "AmbientRange", "ColorRemap", "Multiply", "WorldLIghtRemap", "Multiply_1", "Add", "SmoothStep", "Add_1", "Convert", "Mix", "DiffuseLighting", "Fresnel", "UniNormal"]
+                float inputs:brightnessRemapHigh = 0.1 (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-2198.0745, -177.20569)
+                            int stackingOrderInSubgraph = 19577
+                        }
+                    }
+                )
+                float inputs:brightnessRemapHigh.connect = </Root/CharacterMaterial/CelSurface.inputs:brightnessRemapHigh>
+                float inputs:brightnessRemapLow = -0.1 (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-2201.9387, -95.33652)
+                            int stackingOrderInSubgraph = 19526
+                        }
+                    }
+                )
+                float inputs:brightnessRemapLow.connect = </Root/CharacterMaterial/CelSurface.inputs:brightnessRemapLow>
+                color3f inputs:DarkColor = (0, 0, 0) (
+                    colorSpace = "lin_srgb"
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-2193.9668, 80.88392)
+                            int stackingOrderInSubgraph = 19584
+                        }
+                    }
+                )
+                color3f inputs:DarkColor.connect = </Root/CharacterMaterial/CelSurface.inputs:DarkColor>
+                float inputs:FresnelThreshold = 0.7 (
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-2204.7266, -19.368395)
+                            int stackingOrderInSubgraph = 19580
+                        }
+                    }
+                )
+                color3f inputs:HighlightColor = (0.999996, 1, 1) (
+                    colorSpace = "lin_srgb"
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-2203.929, 166.06018)
+                            int stackingOrderInSubgraph = 19577
+                        }
+                    }
+                )
+                color3f inputs:HighlightColor.connect = </Root/CharacterMaterial/CelSurface.inputs:HighlightColor>
+                color3f inputs:Image = (0, 0.9914394, 1) (
+                    colorSpace = "srgb_texture"
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-680.0336, -109.391556)
+                            int stackingOrderInSubgraph = 19274
+                        }
+                    }
+                )
+                color3f inputs:Image.connect = </Root/CharacterMaterial/CelSurface.inputs:Image>
+                color3f inputs:MidColor = (0.6642242, 0.66424006, 0.66423154) (
+                    colorSpace = "lin_srgb"
+                    customData = {
+                        dictionary realitykit = {
+                            float2 positionInSubgraph = (-2213.3513, 263.27603)
+                            int stackingOrderInSubgraph = 19506
+                        }
+                    }
+                )
+                color3f inputs:MidColor.connect = </Root/CharacterMaterial/CelSurface.inputs:MidColor>
+                color3f outputs:DiffuseColor.connect = </Root/CharacterMaterial/CelSurface/CelColor/Add.outputs:out>
+                color3f outputs:Out.connect = </Root/CharacterMaterial/CelSurface/CelColor/Multiply.outputs:out>
+                float2 ui:nodegraph:node:pos = (-114.29651, 312.04477)
+                int ui:nodegraph:node:stackingOrder = 18996
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:FresnelThreshold"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-141.11903, 34.061146)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 19436
+
+                def Shader "ConstantFloat"
+                {
+                    uniform token info:id = "ND_constant_float"
+                    float inputs:value = 1
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-608.90375, 261.05103)
+                    int ui:nodegraph:node:stackingOrder = 19434
+                }
+
+                def Shader "Multiply"
+                {
+                    uniform token info:id = "ND_multiply_color3FA"
+                    color3f inputs:in1 = (0, 0.5898009, 1) (
+                        colorSpace = "lin_srgb"
+                    )
+                    color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/Multiply_1.outputs:out>
+                    float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ConstantFloat.outputs:out>
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-322.05112, 70.05462)
+                    int ui:nodegraph:node:stackingOrder = 19254
+                }
+
+                def Shader "WorldLIghtRemap" (
+                    references = None
+                )
+                {
+                    uniform token info:id = "ND_remap_color3"
+                    color3f inputs:in = (1, 0.5409764, 0.8473143) (
+                        colorSpace = "lin_srgb"
+                    )
+                    color3f inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientColor.outputs:Out>
+                    color3f inputs:inhigh = (0.6039216, 0.6313726, 0.6313726) (
+                        colorSpace = "lin_srgb"
+                    )
+                    color3f inputs:inhigh.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientRange.outputs:High>
+                    color3f inputs:inlow = (0.22745098, 0.22745098, 0.22745098) (
+                        colorSpace = "lin_srgb"
+                    )
+                    color3f inputs:inlow.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientRange.outputs:Low>
+                    color3f inputs:outhigh = (0.9729826, 0.9624636, 0.8270536) (
+                        colorSpace = "srgb_displayp3"
+                    )
+                    color3f inputs:outlow = (0.921431, 0.92145264, 0.921441) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-601.86475, 117.34333)
+                    int ui:nodegraph:node:stackingOrder = 19520
+                }
+
+                def Shader "Multiply_1"
+                {
+                    uniform token info:id = "ND_multiply_color3"
+                    color3f inputs:in1 = (0, 0.9914394, 1)
+                    color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/WorldLIghtRemap.outputs:out>
+                    color3f inputs:in2 = (0, 0.9914394, 1) (
+                        colorSpace = "lin_srgb"
+                    )
+                    color3f inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/Add.outputs:out>
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-421.36148, 60.516968)
+                    int ui:nodegraph:node:stackingOrder = 19256
+                }
+
+                def Shader "Add"
+                {
+                    uniform token info:id = "ND_add_color3"
+                    color3f inputs:in1 = (0.999996, 1, 1) (
+                        colorSpace = "lin_srgb"
+                    )
+                    color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:Image>
+                    color3f inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/Convert.outputs:out>
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-529.4314, -8.336717)
+                    int ui:nodegraph:node:stackingOrder = 19258
+                }
+
+                def Shader "SmoothStep"
+                {
+                    uniform token info:id = "ND_smoothstep_float"
+                    float inputs:high.connect = </Root/CharacterMaterial/CelSurface/CelColor/Add_1.outputs:out>
+                    float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting.outputs:Remap_out>
+                    float inputs:low.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:FresnelThreshold>
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-1176.3798, -136.99329)
+                    int ui:nodegraph:node:stackingOrder = 19326
+                }
+
+                def Shader "Add_1"
+                {
+                    uniform token info:id = "ND_add_float"
+                    float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:FresnelThreshold>
+                    float inputs:in2 = 0.1
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-1302.9797, -62.332672)
+                    int ui:nodegraph:node:stackingOrder = 19498
+                }
+
+                def Shader "Convert"
+                {
+                    uniform token info:id = "ND_convert_float_color3"
+                    float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/Mix.outputs:out>
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-750.05066, -37.987957)
+                    int ui:nodegraph:node:stackingOrder = 19280
+                }
+
+                def Shader "Mix"
+                {
+                    uniform token info:id = "ND_mix_float"
+                    float inputs:bg
+                    float inputs:fg.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel.outputs:Convert_out>
+                    float inputs:mix.connect = </Root/CharacterMaterial/CelSurface/CelColor/SmoothStep.outputs:out>
+                    float outputs:out
+                    float2 ui:nodegraph:node:pos = (-968.85443, -224.24521)
+                    int ui:nodegraph:node:stackingOrder = 19322
+                }
+
+                def NodeGraph "AmbientRange" (
+                    active = true
+                )
+                {
+                    float3 inputs:UniNormal = (-0.59, 0, 0) (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (-947.3242, -17.726562)
+                                int stackingOrderInSubgraph = 18385
+                            }
+                        }
+                    )
+                    float3 inputs:UniNormal.connect = </Root/CharacterMaterial/CelSurface/CelColor/UniNormal.outputs:Out>
+                    color3f outputs:High (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (-16, 71.5)
+                                int stackingOrderInSubgraph = 18364
+                            }
+                        }
+                    )
+                    color3f outputs:High.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientRange/Add_2.outputs:out>
+                    color3f outputs:Low (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (-16, 71.5)
+                                int stackingOrderInSubgraph = 18363
+                            }
+                        }
+                    )
+                    color3f outputs:Low.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientRange/Add_1.outputs:out>
+                    float2 ui:nodegraph:node:pos = (-1021.8654, 246.00533)
+                    int ui:nodegraph:node:stackingOrder = 19438
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:High"]
+                    float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-132.33203, 30.886719)
+                    int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 18388
+
+                    def Shader "Add_1"
+                    {
+                        uniform token info:id = "ND_add_color3"
+                        color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientRange/WorldLightRadiance.outputs:diffuseRadiance>
+                        color3f inputs:in2 = (0, 0, 0) (
+                            colorSpace = "lin_srgb"
+                        )
+                        color3f outputs:out
+                        float2 ui:nodegraph:node:pos = (-415.61725, 89.410324)
+                        int ui:nodegraph:node:stackingOrder = 18368
+                        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
+                    }
+
+                    def Shader "WorldLightRadiance" (
+                        references = None
+                    )
+                    {
+                        uniform token info:id = "ND_realitykit_environment_radiance"
+                        color3f inputs:baseColor = (0.5686275, 0.5686275, 0.5686275) (
+                            colorSpace = "lin_srgb"
+                        )
+                        color3f inputs:baseColor.connect = None
+                        half inputs:metallic
+                        float3 inputs:normal.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientRange.inputs:UniNormal>
+                        half inputs:roughness = 0.5
+                        half inputs:specular
+                        color3f outputs:diffuseRadiance
+                        color3f outputs:specularRadiance
+                        float2 ui:nodegraph:node:pos = (-652.3555, -11.400223)
+                        int ui:nodegraph:node:stackingOrder = 18385
+                    }
+
+                    def Shader "Add_2"
+                    {
+                        uniform token info:id = "ND_add_color3"
+                        color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientRange/WorldLightRadiance.outputs:diffuseRadiance>
+                        color3f inputs:in2 = (0.5606232, 0.5606368, 0.5606295) (
+                            colorSpace = "lin_srgb"
+                        )
+                        color3f outputs:out
+                        float2 ui:nodegraph:node:pos = (-418.55084, 24.255539)
+                        int ui:nodegraph:node:stackingOrder = 18387
+                    }
+                }
+
+                def NodeGraph "AmbientColor" (
+                    active = true
+                )
+                {
+                    color3f inputs:Color = (0.999996, 1, 1) (
+                        colorSpace = "lin_srgb"
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (-578.09375, -86.46094)
+                                int stackingOrderInSubgraph = 18402
+                            }
+                        }
+                    )
+                    color3f inputs:Color.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.outputs:Color_out>
+                    float3 inputs:UniNormal = (0, 0, 0) (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (-555.1172, 91.80859)
+                                int stackingOrderInSubgraph = 18401
+                            }
+                        }
+                    )
+                    float3 inputs:UniNormal.connect = </Root/CharacterMaterial/CelSurface/CelColor/UniNormal.outputs:Out>
+                    color3f outputs:Out (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (-16, 71.5)
+                                int stackingOrderInSubgraph = 18396
+                            }
+                        }
+                    )
+                    color3f outputs:Out.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientColor/WorldLightRadiance_1.outputs:diffuseRadiance>
+                    float2 ui:nodegraph:node:pos = (-1034.4944, 69.14922)
+                    int ui:nodegraph:node:stackingOrder = 19440
+                    float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 87.5)
+                    int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 18396
+
+                    def Shader "WorldLightRadiance_1"
+                    {
+                        uniform token info:id = "ND_realitykit_environment_radiance"
+                        color3f inputs:baseColor = (0.99942404, 0.9855537, 0) (
+                            colorSpace = "lin_srgb"
+                        )
+                        color3f inputs:baseColor.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientColor.inputs:Color>
+                        half inputs:metallic = 0
+                        float3 inputs:normal = (1, 0, 0)
+                        float3 inputs:normal.connect = </Root/CharacterMaterial/CelSurface/CelColor/AmbientColor.inputs:UniNormal>
+                        half inputs:roughness = 0.5
+                        half inputs:specular = 0
+                        color3f outputs:diffuseRadiance
+                        color3f outputs:specularRadiance
+                        float2 ui:nodegraph:node:pos = (-264.5, -2.7421875)
+                        int ui:nodegraph:node:stackingOrder = 18401
+                        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:normal"]
+                    }
+                }
+
+                def NodeGraph "ColorRemap"
+                {
+                    color3f inputs:DarkColor = (0.016804177, 0.198351, 1) (
+                        colorSpace = "lin_srgb"
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (1179.6938, -43.786324)
+                                int stackingOrderInSubgraph = 16355
+                            }
+                        }
+                    )
+                    color3f inputs:DarkColor.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:DarkColor>
+                    float inputs:DarkStep = 0.65 (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (939.87396, -3.790466)
+                                int stackingOrderInSubgraph = 16627
+                            }
+                        }
+                    )
+                    float inputs:DiffuseLighting = 0 (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (709.81696, 201.67043)
+                                int stackingOrderInSubgraph = 16742
+                            }
+                        }
+                    )
+                    float inputs:Edge = 0.015 (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (943.94824, 448.95285)
+                            }
+                        }
+                    )
+                    color3f inputs:HighlightColor = (1, 0.14913142, 0) (
+                        colorSpace = "lin_srgb"
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (1184.0599, 440.60583)
+                                int stackingOrderInSubgraph = 16355
+                            }
+                        }
+                    )
+                    color3f inputs:HighlightColor.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:HighlightColor>
+                    float inputs:HighStep = 0.7 (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (932.90375, 326.6325)
+                                int stackingOrderInSubgraph = 16737
+                            }
+                        }
+                    )
+                    color3f inputs:MidColor = (0, 0.98106676, 0.5736914) (
+                        colorSpace = "lin_srgb"
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (1185.2229, 212.95634)
+                                int stackingOrderInSubgraph = 16355
+                            }
+                        }
+                    )
+                    color3f inputs:MidColor.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:MidColor>
+                    color3f outputs:Color_out.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Add.outputs:out>
+                    float2 ui:nodegraph:node:pos = (-1493.1132, 364.107)
+                    int ui:nodegraph:node:stackingOrder = 19524
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:brightnessRemapHigh"]
+                    float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (2146.3674, 208.48727)
+                    int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 16355
+
+                    def Shader "Multiply"
+                    {
+                        uniform token info:id = "ND_multiply_color3FA"
+                        color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:HighlightColor>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/SmoothStep.outputs:out>
+                        color3f outputs:out
+                        float2 ui:nodegraph:node:pos = (1601.2548, 464.25427)
+                        int ui:nodegraph:node:stackingOrder = 16355
+                    }
+
+                    def Shader "Add_1"
+                    {
+                        uniform token info:id = "ND_add_color3"
+                        color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Multiply_3.outputs:out>
+                        color3f inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Multiply_2.outputs:out>
+                        color3f outputs:out
+                        float2 ui:nodegraph:node:pos = (1808.7544, 83.69074)
+                        int ui:nodegraph:node:stackingOrder = 16355
+                    }
+
+                    def Shader "Oneminus"
+                    {
+                        uniform token info:id = "ND_realitykit_oneminus_float"
+                        float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/SmoothStep.outputs:out>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1448.4998, 350.93738)
+                        int ui:nodegraph:node:stackingOrder = 16739
+                    }
+
+                    def Shader "Multiply_3"
+                    {
+                        uniform token info:id = "ND_multiply_color3FA"
+                        color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:DarkColor>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Oneminus_1.outputs:out>
+                        color3f outputs:out
+                        float2 ui:nodegraph:node:pos = (1618.1731, -30.931175)
+                        int ui:nodegraph:node:stackingOrder = 16355
+                    }
+
+                    def Shader "Multiply_1"
+                    {
+                        uniform token info:id = "ND_multiply_float"
+                        float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Oneminus.outputs:out>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/SmoothStep_1.outputs:out>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1600.514, 287.11847)
+                        int ui:nodegraph:node:stackingOrder = 16355
+                    }
+
+                    def Shader "Add"
+                    {
+                        uniform token info:id = "ND_add_color3"
+                        color3f inputs:in1 = (1, 0.7070156, 0.43358168) (
+                            colorSpace = "lin_srgb"
+                        )
+                        color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Add_1.outputs:out>
+                        color3f inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Multiply.outputs:out>
+                        color3f outputs:out
+                        float2 ui:nodegraph:node:pos = (1938.3357, 233.5174)
+                        int ui:nodegraph:node:stackingOrder = 16355
+                    }
+
+                    def Shader "Multiply_2"
+                    {
+                        uniform token info:id = "ND_multiply_color3FA"
+                        color3f inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:MidColor>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Multiply_1.outputs:out>
+                        color3f outputs:out
+                        float2 ui:nodegraph:node:pos = (1709.6086, 224.39778)
+                        int ui:nodegraph:node:stackingOrder = 16355
+                    }
+
+                    def Shader "Oneminus_1"
+                    {
+                        uniform token info:id = "ND_realitykit_oneminus_float"
+                        float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/SmoothStep_1.outputs:out>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1429.6885, 138.2498)
+                        int ui:nodegraph:node:stackingOrder = 16355
+                    }
+
+                    def Shader "SmoothStep"
+                    {
+                        uniform token info:id = "ND_smoothstep_float"
+                        float inputs:high.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Add_2.outputs:out>
+                        float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:DiffuseLighting>
+                        float inputs:low.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Subtract.outputs:out>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1286.528, 330.9229)
+                        int ui:nodegraph:node:stackingOrder = 16735
+                        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
+                    }
+
+                    def Shader "Add_2"
+                    {
+                        uniform token info:id = "ND_add_float"
+                        float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:HighStep>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:Edge>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1140.4252, 370.9955)
+                        int ui:nodegraph:node:stackingOrder = 16680
+                    }
+
+                    def Shader "Subtract"
+                    {
+                        uniform token info:id = "ND_subtract_float"
+                        float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:HighStep>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:Edge>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1134.1456, 322.78296)
+                        int ui:nodegraph:node:stackingOrder = 16680
+                    }
+
+                    def Shader "Add_3"
+                    {
+                        uniform token info:id = "ND_add_float"
+                        float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:DarkStep>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:Edge>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1130.9789, 122.62779)
+                        int ui:nodegraph:node:stackingOrder = 16730
+                    }
+
+                    def Shader "Subtract_1"
+                    {
+                        uniform token info:id = "ND_subtract_float"
+                        float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:DarkStep>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:Edge>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1117.9159, 64.02863)
+                        int ui:nodegraph:node:stackingOrder = 16728
+                    }
+
+                    def Shader "SmoothStep_1"
+                    {
+                        uniform token info:id = "ND_smoothstep_float"
+                        float inputs:high.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Add_3.outputs:out>
+                        float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap.inputs:DiffuseLighting>
+                        float inputs:low.connect = </Root/CharacterMaterial/CelSurface/CelColor/ColorRemap/Subtract_1.outputs:out>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1271.342, 77.49234)
+                        int ui:nodegraph:node:stackingOrder = 16734
+                        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
+                    }
+                }
+
+                def NodeGraph "DiffuseLighting"
+                {
+                    float inputs:brightnessRemapHigh (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (696, 774.5)
+                                int stackingOrderInSubgraph = 16962
+                            }
+                        }
+                    )
+                    float inputs:brightnessRemapHigh.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:brightnessRemapHigh>
+                    float inputs:brightnessRemapLow (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (703.4277, 548.09326)
+                                int stackingOrderInSubgraph = 16966
+                            }
+                        }
+                    )
+                    float inputs:brightnessRemapLow.connect = </Root/CharacterMaterial/CelSurface/CelColor.inputs:brightnessRemapLow>
+                    float3 inputs:UniNormal (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (113.5, 467.5)
+                                int stackingOrderInSubgraph = 16961
+                            }
+                        }
+                    )
+                    float3 inputs:UniNormal.connect = </Root/CharacterMaterial/CelSurface/CelColor/UniNormal.outputs:Out>
+                    float outputs:Remap_out.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/Remap.outputs:out>
+                    float2 ui:nodegraph:node:pos = (-1744.1375, -208.72353)
+                    int ui:nodegraph:node:stackingOrder = 19527
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Remap_out", "outputs:Remap_out", "outputs:Remap_out", "inputs:brightnessRemapLow"]
+                    float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1300.5, 487)
+                    int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 16962
+
+                    def Shader "WorldLightRadiance"
+                    {
+                        uniform token info:id = "ND_realitykit_environment_radiance"
+                        color3f inputs:baseColor = (0.999996, 1, 1) (
+                            colorSpace = "lin_srgb"
+                        )
+                        half inputs:metallic = 0
+                        float3 inputs:normal = (1, 0, 0)
+                        float3 inputs:normal.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting.inputs:UniNormal>
+                        half inputs:roughness = 1
+                        half inputs:specular = 0
+                        color3f outputs:diffuseRadiance
+                        color3f outputs:specularRadiance
+                        float2 ui:nodegraph:node:pos = (409, 467.5)
+                        int ui:nodegraph:node:stackingOrder = 16960
+                        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:normal"]
+                    }
+
+                    def Shader "WorldSpaceSurfaceNormal"
+                    {
+                        uniform token info:id = "ND_normal_vector3"
+                        string inputs:space = "world"
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (407.04935, 152.29773)
+                        int ui:nodegraph:node:stackingOrder = 16977
+                    }
+
+                    def Shader "Swizzle"
+                    {
+                        uniform token info:id = "ND_swizzle_color3_float"
+                        string inputs:channels = "r"
+                        color3f inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/EnvironmentRadiance.outputs:diffuseRadiance>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (932.41345, 186.37915)
+                        int ui:nodegraph:node:stackingOrder = 16970
+                    }
+
+                    def Shader "Swizzle_1"
+                    {
+                        uniform token info:id = "ND_swizzle_color3_float"
+                        string inputs:channels = "r"
+                        color3f inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/WorldLightRadiance.outputs:diffuseRadiance>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (696, 659.5)
+                        int ui:nodegraph:node:stackingOrder = 16960
+                    }
+
+                    def Shader "Swizzle_2"
+                    {
+                        uniform token info:id = "ND_swizzle_color3_float"
+                        string inputs:channels = "r"
+                        color3f inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/WorldLightRadiance.outputs:specularRadiance>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (697.6918, 459.69385)
+                        int ui:nodegraph:node:stackingOrder = 16968
+                    }
+
+                    def Shader "Add_9"
+                    {
+                        uniform token info:id = "ND_add_float"
+                        float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/Swizzle_2.outputs:out>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting.inputs:brightnessRemapLow>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (927.5, 481.14426)
+                        int ui:nodegraph:node:stackingOrder = 16975
+                    }
+
+                    def Shader "Add_8"
+                    {
+                        uniform token info:id = "ND_add_float"
+                        float inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/Swizzle_1.outputs:out>
+                        float inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting.inputs:brightnessRemapHigh>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (927.5, 717)
+                        int ui:nodegraph:node:stackingOrder = 16960
+                    }
+
+                    def Shader "EnvironmentRadiance"
+                    {
+                        uniform token info:id = "ND_realitykit_environment_radiance"
+                        color3f inputs:baseColor.connect = None
+                        half inputs:metallic = 0
+                        float3 inputs:normal.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/WorldSpaceSurfaceNormal.outputs:out>
+                        half inputs:roughness = 1
+                        half inputs:specular = 0
+                        color3f outputs:diffuseRadiance
+                        color3f outputs:specularRadiance
+                        float2 ui:nodegraph:node:pos = (696, 107)
+                        int ui:nodegraph:node:stackingOrder = 16962
+                        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:diffuseRadiance", "inputs:baseColor", "inputs:roughness"]
+                    }
+
+                    def Shader "Remap"
+                    {
+                        uniform token info:id = "ND_remap_float"
+                        float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/Swizzle.outputs:out>
+                        float inputs:inhigh = 1
+                        float inputs:inhigh.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/Add_8.outputs:out>
+                        float inputs:inlow = 0
+                        float inputs:inlow.connect = </Root/CharacterMaterial/CelSurface/CelColor/DiffuseLighting/Add_9.outputs:out>
+                        float inputs:outhigh
+                        float inputs:outlow = 0
+                        float inputs:outlow.connect = None
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1113.5, 487)
+                        int ui:nodegraph:node:stackingOrder = 16961
+                    }
+                }
+
+                def NodeGraph "Fresnel"
+                {
+                    float outputs:Convert_out.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/SmoothStep.outputs:out>
+                    float2 ui:nodegraph:node:pos = (-1169.9269, -264.12988)
+                    int ui:nodegraph:node:stackingOrder = 19464
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:Convert_out", "outputs:Convert_out", "outputs:Convert_out"]
+                    float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1492.5, 218.5)
+                    int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 17507
+
+                    def Shader "SmoothStep"
+                    {
+                        uniform token info:id = "ND_smoothstep_float"
+                        float inputs:high = 0.8
+                        float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/Remap.outputs:out>
+                        float inputs:low = 0.4
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (1080.75, 218.5)
+                        int ui:nodegraph:node:stackingOrder = 17503
+                    }
+
+                    def Shader "Remap"
+                    {
+                        uniform token info:id = "ND_remap_float"
+                        float inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/DotProduct.outputs:out>
+                        float inputs:inlow = -1
+                        float inputs:outhigh = 1.4
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (897.5, 218.5)
+                        int ui:nodegraph:node:stackingOrder = 17499
+                    }
+
+                    def Shader "Subtract"
+                    {
+                        uniform token info:id = "ND_subtract_vector3"
+                        float3 inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/Position.outputs:out>
+                        float3 inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/CameraPosition.outputs:out>
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (255.0762, 233.07501)
+                        int ui:nodegraph:node:stackingOrder = 17448
+                    }
+
+                    def Shader "DotProduct"
+                    {
+                        uniform token info:id = "ND_dotproduct_vector3"
+                        float3 inputs:in1.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/Normalize_1.outputs:out>
+                        float3 inputs:in2.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/Normal.outputs:out>
+                        float outputs:out
+                        float2 ui:nodegraph:node:pos = (695.75, 218.5)
+                        int ui:nodegraph:node:stackingOrder = 17406
+                    }
+
+                    def Shader "Normal"
+                    {
+                        uniform token info:id = "ND_normal_vector3"
+                        string inputs:space = "world"
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (444.60956, 316.69305)
+                        int ui:nodegraph:node:stackingOrder = 17450
+                    }
+
+                    def Shader "Normalize_1"
+                    {
+                        uniform token info:id = "ND_normalize_vector3"
+                        float3 inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/Fresnel/Subtract.outputs:out>
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (424.0762, 233.07501)
+                        int ui:nodegraph:node:stackingOrder = 17448
+                    }
+
+                    def Shader "Position"
+                    {
+                        uniform token info:id = "ND_position_vector3"
+                        string inputs:space = "world"
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (57.89339, 85.433044)
+                        int ui:nodegraph:node:stackingOrder = 17448
+                    }
+
+                    def Shader "CameraPosition"
+                    {
+                        uniform token info:id = "ND_realitykit_cameraposition_vector3"
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (44.327106, 256.965)
+                        int ui:nodegraph:node:stackingOrder = 17448
+                    }
+                }
+
+                def NodeGraph "UniNormal" (
+                    active = true
+                )
+                {
+                    float3 outputs:Out (
+                        customData = {
+                            dictionary realitykit = {
+                                float2 positionInSubgraph = (-16, 71.5)
+                                int stackingOrderInSubgraph = 16699
+                            }
+                        }
+                    )
+                    float3 outputs:Out.connect = </Root/CharacterMaterial/CelSurface/CelColor/UniNormal/Refract.outputs:out>
+                    float2 ui:nodegraph:node:pos = (-1985.6678, 35.378048)
+                    int ui:nodegraph:node:stackingOrder = 19506
+                    float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (112.671875, 40.84375)
+                    int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 16721
+
+                    def Shader "Refract"
+                    {
+                        uniform token info:id = "ND_realitykit_refract_vector3"
+                        float inputs:eta = 9999
+                        float3 inputs:in.connect = </Root/CharacterMaterial/CelSurface/CelColor/UniNormal/ViewDirection.outputs:out>
+                        float3 inputs:normal = (0, 0, 1)
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (-218.625, 37.83203)
+                        int ui:nodegraph:node:stackingOrder = 16719
+                    }
+
+                    def Shader "ViewDirection"
+                    {
+                        uniform token info:id = "ND_realitykit_viewdirection_vector3"
+                        float3 outputs:out
+                        float2 ui:nodegraph:node:pos = (-538.8008, 30.183594)
+                        int ui:nodegraph:node:stackingOrder = 16713
+                    }
+                }
+            }
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Root/CharacterMaterial/CelSurface/CelColor.outputs:DiffuseColor>
+                color3f inputs:emissiveColor.connect = </Root/CharacterMaterial/CelSurface/CelColor.outputs:Out>
+                float inputs:ior
+                float inputs:metallic.connect = None
+                float3 inputs:normal
+                float inputs:occlusion
+                float inputs:opacity = 1
+                float inputs:opacity.connect = </Root/CharacterMaterial/CelSurface.inputs:Opacity>
+                float inputs:opacityThreshold.connect = </Root/CharacterMaterial/CelSurface.inputs:OpacityThreshold>
+                float inputs:roughness
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (206.07812, 269.0547)
+                int ui:nodegraph:node:stackingOrder = 19002
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:roughness"]
+            }
+        }
+
+        def Shader "Image"
+        {
+            uniform token info:id = "ND_image_color3"
+            color3f inputs:default = (0, 0, 0) (
+                colorSpace = "lin_srgb"
+            )
+            asset inputs:file.connect = </Root/CharacterMaterial.inputs:image>
+            string inputs:filtertype
+            float2 inputs:texcoord
+            string inputs:uaddressmode
+            string inputs:vaddressmode
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (-140.72435, 274.42676)
+            int ui:nodegraph:node:stackingOrder = 46
+        }
+    }
+}
+
